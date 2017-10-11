@@ -162,6 +162,9 @@ byte gmxNB_init(String upd_addre, int udp_port, void( *callback)())
     String response;
     byte init_status = GMXNB_KO;
     
+    _udp_socket_ip = upd_addre;
+    _udp_port = udp_port;
+
     _log("GMXNB Init");
 
     pinMode(GMX_GPIO1,OUTPUT);
