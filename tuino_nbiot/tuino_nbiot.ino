@@ -34,7 +34,7 @@ void setup() {
   Serial.println("Starting");
 
   // Init NB IoT board
-  gmxNB_init("1.1.1.1","9200",NULL);
+  gmxNB_init("1.1.1.1",9200,NULL);
 
   gmxNB_getVersion(version);
   Serial.println("GMXNB Version:"+version);

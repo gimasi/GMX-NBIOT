@@ -36,7 +36,7 @@ byte gmxNB_interface = GMX_UART_INTERFACE;
 void(*_NBRing)();
 
 String _udp_socket_ip;
-String _upd_port;
+String _udp_port;
 
 //
 // ISR 
@@ -47,6 +47,7 @@ ISR(PCINT1_vect) {
       _NBRing();
   }
 }
+
 
 void _resetGMX(){
 
@@ -319,7 +320,7 @@ byte gmxNB_TXData(String data) {
    _sendCmd("at+nsocr=DGRAM,17,"+_udp_port+"\r");
    _parseResponse(dummyResponse);
  
-   _sendCmd("at+nsost=0,"+_upd_socket_ip+","+_upd_port+","+String(num_bytes)+","+data+"\r" ); 
+   _sendCmd("at+nsost=0,"+_udp_socket_ip+","+_udp_port+","+String(num_bytes)+","+data+"\r" ); 
    _parseResponse(dummyResponse);
    _sendCmd("at+nsocl=0\r");
    return( _parseResponse(dummyResponse) );
