@@ -48,7 +48,7 @@
  *  the only parameter is the function for the RxData callback
  */
  
-byte gmxNB_init(void (*function)());
+byte gmxNB_init(String upd_addre, int udp_port, void( *callback)()) ;
 byte gmxNB_getVersion(String& version);
 byte gmxNB_getIMEI(String& imei);
 
