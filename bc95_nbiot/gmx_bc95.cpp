@@ -330,7 +330,7 @@ uint8_t gmxBC95_TXData(uint8_t socket_num, char *remote_addr, uint32_t port, cha
   
   for(i=0;i<data_len;i++)
   {
-    sprintf(hex_string,"%02X",data[i]);
+    sprintf(hex_string,"%02X",(unsigned char)data[i]);
     strcat(data_payload,hex_string);
   } 
 
