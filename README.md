@@ -60,7 +60,7 @@ Here a quick 'logical sequence' of the calls
   tx_buffer[1]=0x01;
   tx_buffer[2]=0x02;
     
-  if (gmxBC95_SocketOpen(9200,&socket_num)==0)
+  if (gmxBC95_SocketOpen(__UDP_PORT__,&socket_num)==0)
      Serial.println("Socket Open Ok!");
 
  
