@@ -221,10 +221,14 @@ we then prepare the payload by adding the lenght of the payload and the actual p
 
 <br/>
 <br/>
+# The Module !
 <img src="/docs/gmx-nbiot.jpg"/>
 
 <br/>
 <br/>
 
 We have left the very old ( but working ) version tuino_nbiot for anybody which is  still using it.<br/>
+<br/>
+<br/>
+Please feel free to send suggestions or correct mistakes that (probably) we have made...  info@gimasi.ch
 
