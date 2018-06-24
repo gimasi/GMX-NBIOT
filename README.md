@@ -217,16 +217,12 @@ we then prepare the payload by adding the lenght of the payload and the actual p
 
 (coming soon)
 
-
-
 <br/>
-<br/>
+
 # The Module !
 <img src="/docs/gmx-nbiot.jpg"/>
 
 <br/>
-<br/>
-
 We have left the very old ( but working ) version tuino_nbiot for anybody which is  still using it.<br/>
 <br/>
 <br/>
