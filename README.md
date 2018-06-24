@@ -85,7 +85,7 @@ All function returns 0 or -1 in case of error.
 
 
 
-* Initialization Functions
+## Initialization Functions
 ```c
 uint8_t gmxBC95_init(char *apn, char *operator_code);
 ```
@@ -112,7 +112,7 @@ uint8_t gmxBC95_start();
 ```
 Configures APN and starts modules<br/>
 
-* Attaching to network
+## Attaching to network
 
 ```c
 uint8_t gmxBC95_attach(void);
@@ -128,19 +128,20 @@ uint8_t gmxBC95_isNetworkAttached(int *attach_status);
 ```
 This function simply check's if we are attached returning in the attach_status variable this possible values:
 
-*0     Not registered, MT is not currently searching an operator to register to
-*1     Registered, home network
-*2     Not registered, but MT is currently trying to attach or searching an operator to register to
-*3     Registration denied
-*4     Unknown (e.g. out of E-UTRAN coverage)
-*5     Registered, roaming
-*6     Registered for “SMS only”, home network (not applicable)
-*7     Registered for “SMS only”, roaming (not applicable)
-*8     Attached for emergency bearer services only
-*9     Registered for “CSFB not preferred”, home network (not applicable)
-*10    Registered for “CSFB not preferred”, roaming (not applicable)
+* 0     Not registered, MT is not currently searching an operator to register to
+* 1     Registered, home network
+* 2     Not registered, but MT is currently trying to attach or searching an operator to register to
+* 3     Registration denied
+* 4     Unknown (e.g. out of E-UTRAN coverage)
+* 5     Registered, roaming
+* 6     Registered for “SMS only”, home network (not applicable)
+* 7     Registered for “SMS only”, roaming (not applicable)
+* 8     Attached for emergency bearer services only
+* 9     Registered for “CSFB not preferred”, home network (not applicable)
+* 10    Registered for “CSFB not preferred”, roaming (not applicable)
 
 
+## Sending ( and receiving ) Data
 
 ```c
 uint8_t gmxBC95_SocketOpen(uint32_t port_number, uint8_t *socket_num);
@@ -165,12 +166,29 @@ Same as TXData that this function waits for a RX packet coming from the server. 
 The TX parameters are identical to the gmxBC95_TXData function. If something is received the rx_len value will be different than 0.<br/>
 rx_buffer is the data buffer that will contain hexadecimal strings of the the received paylaod, rx_buffer_len is the max len of this buffer.<br/>
 
+## Utility Functions
 
 ```c
 uint8_t gmxBC95_signalQuality(int *rssi, int *ber );
 ```
+Returns ths radio signal level, here the extract from BC95 manual<br/>
+<rssi> Integer type<br/>
+* 0 -113dBm or less
+* 1 -111dBm
+* 2...30 -109dBm... -53dBm
+* 31 -51dBm or greater
+* 99 Not known or not detectable
+<br/>
+
+<ber> Integer type; channel bit error rate (in percent)<br/>
+* 0...7 As RXQUAL values (please refer to 3GPP specifications)
+* 99 Not known or not detectable
 
 
+# Payload Encoding when sending data to GIoTTY
+
+
+<br/>
 <br/>
 
 We have left the very old ( but working ) version tuino_nbiot for anybody which is  still using it.<br/>
