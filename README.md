@@ -1,5 +1,5 @@
 # GMX-NBIOT
-Find in the bc95_niot directory the new library for handling the BC96 NBIOT module on the Tuino ( it should work with any Arduino compatible board that has a BC95 connected to a serial port ).<br/>
+Find in the <b>bc95_nbiot</b> directory the new library for handling the BC96 NBIOT module on the Tuino ( it should work with any Arduino compatible board that has a BC95 connected to a serial port ).<br/>
 The library consists of the gmx_bc95 and at_client files, we have added a simple sketch bc95_nbiot.ino to show how to use them.<br/>
 <br>
 
@@ -74,7 +74,6 @@ Here a quick 'logical sequence' of the calls
 
 ```
 
-Here the list of functions of the library:
 
 All function returns 0 or -1 in case of error.
 ```c
@@ -186,14 +185,46 @@ Returns ths radio signal level, here the extract from BC95 manual<br/>
 
 
 # Payload Encoding when sending data to GIoTTY
+To send data to our IoT cloud ( GIoTTY) we have implemented a very simple protocol that consists in sending the IMEI of the module, followed by the actual payload.<br>
+We format the IMEI by adding a leading zero so it becomes a 16 digit number, and we treat it as an hexadecimal string, so transforming it in a 8 byte value<br/>
 
+```c
+
+	sprintf(imei_buffer,"0%s",IMEI);
+ 
+    for (int i=0;i<8;i++)
+    {
+        uint8_t high,low;
+
+        high = (imei_buffer[i*2]-0x30) * 16;
+        low =  (imei_buffer[(i*2)+1]-0x30);
+
+       devAddress[i] = high + low;
+   }
+```
+
+we then prepare the payload by adding the lenght of the payload and the actual paylaod.
+
+```c
+	 memcpy(tx_buffer,devAddress,8);
+     tx_buffer[8]=0x02;    // lenght if payload
+     tx_buffer[9]=0x01;
+     tx_buffer[10]=0x02;
+    
+```
+
+# Receiving data
+
+(coming soon)
+
+
+
+<br/>
+<br/>
+<img src="/docs/gmx-nbiot.jpg"/>
 
 <br/>
 <br/>
 
 We have left the very old ( but working ) version tuino_nbiot for anybody which is  still using it.<br/>
-
-<br/>
-<br/>
-<img src="/docs/gmx-nbiot.jpg"/>
 
