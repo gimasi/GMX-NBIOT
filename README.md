@@ -172,7 +172,7 @@ rx_buffer is the data buffer that will contain hexadecimal strings of the the re
 uint8_t gmxBC95_signalQuality(int *rssi, int *ber );
 ```
 Returns ths radio signal level, here the extract from BC95 manual<br/>
-<rssi> Integer type<br/>
+<b>rssi</b>  Integer type<br/>
 * 0 -113dBm or less
 * 1 -111dBm
 * 2...30 -109dBm... -53dBm
@@ -180,7 +180,7 @@ Returns ths radio signal level, here the extract from BC95 manual<br/>
 * 99 Not known or not detectable
 <br/>
 
-<ber> Integer type; channel bit error rate (in percent)<br/>
+<b>ber</b> Integer type; channel bit error rate (in percent)<br/>
 * 0...7 As RXQUAL values (please refer to 3GPP specifications)
 * 99 Not known or not detectable
 
